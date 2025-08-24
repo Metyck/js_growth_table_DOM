@@ -20,10 +20,17 @@ appendRow.addEventListener('click', (ev) => {
       appendRow.disabled = false;
     }
 
-    const newRow = tbody.children[tbody.children.length - 1].cloneNode(true);
+    const columsPerRow = tbody.children[0].children.length;
+
+    const newRow = document.createElement('tr');
+
+    for (let i = 0; i < columsPerRow; i++) {
+      const item = document.createElement('td');
+
+      newRow.appendChild(item);
+    }
 
     tbody.append(newRow);
-    // console.log(`${tbody.children.length} rows per column`);
   }
 });
 
@@ -69,10 +76,9 @@ appendColumn.addEventListener('click', (ev) => {
         appendColumn.disabled = false;
       }
 
-      const lastItemCopy = row.lastElementChild.cloneNode();
+      const newColumn = document.createElement('td');
 
-      row.appendChild(lastItemCopy);
-      // console.log(`${row.children.length} columns per row`);
+      row.appendChild(newColumn);
     }
   }
 });
